@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="晚秋落雨">
 <meta property="og:description" content="虽然都是一些简单的Linux命令，但还是记一下吧pwd命令———–查看当前工作目录，输出到屏幕上的是绝对路径  绝对路径是以根目录（“/”）为起点的完整路径，以所要到的目录为终点 相对路径是以当前目录（“.”）为起点的完整路径，以所要到的目录为终点  ls——————-列出当前目录所有文件和文件夹mkdir 目录名——————在当前目录新建文件夹cd 目录名———————进入到指定的目录使用 cd">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T10:52:52.689Z">
+<meta property="og:updated_time" content="2018-04-22T10:57:06.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow学习之python基础语法和一些基本的Linux终端命令">
 <meta name="twitter:description" content="虽然都是一些简单的Linux命令，但还是记一下吧pwd命令———–查看当前工作目录，输出到屏幕上的是绝对路径  绝对路径是以根目录（“/”）为起点的完整路径，以所要到的目录为终点 相对路径是以当前目录（“.”）为起点的完整路径，以所要到的目录为终点  ls——————-列出当前目录所有文件和文件夹mkdir 目录名——————在当前目录新建文件夹cd 目录名———————进入到指定的目录使用 cd">
@@ -110,7 +110,20 @@
 <blockquote>
 <p><br> .    表示当前目录<br>  <br> ..   表示当前目录的上一级目录<br>  <br> -    表示上一次所在目录<br>  <br> ～   表示当前用户的 home 目录（即刚 login 时所在的目录）</p>
 </blockquote>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> cd ..           ##返回上级目录 </span><br><span class="line"></span><br><span class="line"> cd ../..        ##返回上两级目录 </span><br><span class="line"></span><br><span class="line"> cd ～           ##进入用户主目录 home 目录</span><br><span class="line"> ``` </span><br><span class="line"></span><br><span class="line">&lt;center&gt;python-------------------------运行Python解释器。&lt;/center&gt;</span><br><span class="line"></span><br><span class="line">## python的简单语法</span><br><span class="line">1. 运算符有五种：+ - * / %</span><br><span class="line"></span><br><span class="line">2. 运算顺序：先乘除 再加减 括号最优先</span><br><span class="line">3. 变量，就是一个标签，由非数字开头的字母、数字、下划线组成，它的内容可以是数值、字符串、列表、元组和字典。 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;数值，就是数字。    </span><br><span class="line">字符串，就是用一对儿双引号、或单引号引起来的内容，只要被引号引起来，就是字符串了。</span><br><span class="line">&lt;br/&gt;a = 100  </span><br><span class="line">b = ”Hello World” </span><br><span class="line">&lt;br/&gt;100 是数值   Vs   ”100”是字符串。      </span><br><span class="line">转义字符： \t  表示 tab    </span><br><span class="line"> \n   表示 换行  </span><br><span class="line"> \ ” 表示 ”  </span><br><span class="line"> %s 占位，用%后的变量s替换 </span><br><span class="line"></span><br><span class="line">举例： </span><br><span class="line"></span><br><span class="line">```code</span><br><span class="line"> a = 100 </span><br><span class="line"> b = ” Hello World ”  </span><br><span class="line"> print ” point = %s \n \”  %s   \” ”  % (a, b)    </span><br><span class="line"> 打印出: </span><br><span class="line"> point=100  </span><br><span class="line"> ” Hello World ”</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ..           ##返回上级目录 </span><br><span class="line"></span><br><span class="line">cd ../..        ##返回上两级目录 </span><br><span class="line"></span><br><span class="line">cd ～           ##进入用户主目录 home 目录</span><br></pre></td></tr></table></figure></p>
+<p>python————————-运行Python解释器。</p>
+<h2 id="python的简单语法"><a href="#python的简单语法" class="headerlink" title="python的简单语法"></a>python的简单语法</h2><ol>
+<li><p>运算符有五种：+ - * / %</p>
+</li>
+<li><p>运算顺序：先乘除 再加减 括号最优先</p>
+</li>
+<li>变量，就是一个标签，由非数字开头的字母、数字、下划线组成，它的内容可以是数值、字符串、列表、元组和字典。 </li>
+</ol>
+<blockquote>
+<p>数值，就是数字。<br>字符串，就是用一对儿双引号、或单引号引起来的内容，只要被引号引起来，就是字符串了。<br><br>a = 100<br>b = ”Hello World”<br><br>100 是数值   Vs   ”100”是字符串。<br>转义字符： \t  表示 tab<br> \n   表示 换行<br> \ ” 表示 ”<br> %s 占位，用%后的变量s替换 </p>
+</blockquote>
+<p>举例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = 100 </span><br><span class="line">b = ” Hello World ”  </span><br><span class="line">print ” point = %s \n \”  %s   \” ”  % (a, b)    </span><br><span class="line">打印出: </span><br><span class="line">point=100  </span><br><span class="line">” Hello World ”</span><br></pre></td></tr></table></figure>
 
       
     </div>

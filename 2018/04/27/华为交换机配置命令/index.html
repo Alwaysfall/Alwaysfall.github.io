@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="pc环境为Linux，以下操作默认在Linux终端执行12345678910111213141516PCAlogin:root；使用root用户password:linux；口令是linux#shutdown-hnow；关机#init0；关机#logout；用户注销#login；用户登录#ifconfig；显示IP地址#ifconfigeth0netmask；设置IP地址#ifconfigeht0">
+<meta name="keywords" content="华为交换机配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为交换机配置命令">
+<meta property="og:url" content="http://alwaysfall.github.io/2018/04/27/华为交换机配置命令/index.html">
+<meta property="og:site_name" content="晚秋落雨">
+<meta property="og:description" content="pc环境为Linux，以下操作默认在Linux终端执行12345678910111213141516PCAlogin:root；使用root用户password:linux；口令是linux#shutdown-hnow；关机#init0；关机#logout；用户注销#login；用户登录#ifconfig；显示IP地址#ifconfigeth0netmask；设置IP地址#ifconfigeht0">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-27T09:30:22.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="华为交换机配置命令">
+<meta name="twitter:description" content="pc环境为Linux，以下操作默认在Linux终端执行12345678910111213141516PCAlogin:root；使用root用户password:linux；口令是linux#shutdown-hnow；关机#init0；关机#logout；用户注销#login；用户登录#ifconfig；显示IP地址#ifconfigeth0netmask；设置IP地址#ifconfigeht0">
+
+
+
+
+
+
+  <link rel="canonical" href="http://alwaysfall.github.io/2018/04/27/华为交换机配置命令/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>华为交换机配置命令 | 晚秋落雨</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晚秋落雨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我没有不顾一切</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alwaysfall.github.io/2018/04/27/华为交换机配置命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="秋里一个凉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晚秋落雨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">华为交换机配置命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-27 17:04:57 / 修改时间：17:30:22" itemprop="dateCreated datePublished" datetime="2018-04-27T17:04:57+08:00">2018-04-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/27/华为交换机配置命令/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/27/华为交换机配置命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>pc环境为Linux，以下操作默认在Linux终端执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">PCAlogin:root；使用root用户</span><br><span class="line">password:linux；口令是linux</span><br><span class="line">#shutdown-hnow；关机</span><br><span class="line">#init0；关机</span><br><span class="line">#logout；用户注销</span><br><span class="line">#login；用户登录</span><br><span class="line">#ifconfig；显示IP地址</span><br><span class="line">#ifconfigeth0netmask；设置IP地址</span><br><span class="line">#ifconfigeht0netmaskdown；禁用IP地址</span><br><span class="line">#routeadd0.0.0.0gw；设置网关</span><br><span class="line">#routedel0.0.0.0gw；删除网关</span><br><span class="line">#routeadddefaultgw；设置网关</span><br><span class="line">#routedeldefaultgw；删除网关</span><br><span class="line">#route；显示网关</span><br><span class="line">#ping；发ECHO包</span><br><span class="line">#telnet；远程登录</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：交换机命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]discur；显示当前配置</span><br><span class="line">[Quidway]displaycurrent-configuration；显示当前配置</span><br><span class="line">[Quidway]displayinterfaces；显示接口信息</span><br><span class="line">[Quidway]displayvlanall；显示路由信息</span><br><span class="line">[Quidway]displayversion；显示版本信息</span><br><span class="line">[Quidway]superpassword；修改特权用户密码</span><br><span class="line">[Quidway]sysname；交换机命名</span><br><span class="line">[Quidway]interfaceethernet0/1；进入接口视图</span><br><span class="line">[Quidway]interfacevlanx；进入接口视图</span><br><span class="line">[Quidway-Vlan-interfacex]ipaddress10.65.1.1255.255.0.0；配置VLAN的IP地址</span><br><span class="line">[Quidway]iproute-static0.0.0.00.0.0.010.65.1.2；静态路由＝网关</span><br><span class="line">[Quidway]rip；三层交换支持</span><br><span class="line">[Quidway]local-userftp</span><br><span class="line">[Quidway]user-interfacevty04；进入虚拟终端</span><br><span class="line">[S3026-ui-vty0-4]authentication-modepassword；设置口令模式</span><br><span class="line">[S3026-ui-vty0-4]setauthentication-modepasswordsimple222；设置口令</span><br><span class="line">[S3026-ui-vty0-4]userprivilegelevel3；用户级别</span><br><span class="line">[Quidway]interfaceethernet0/1；进入端口模式</span><br><span class="line">[Quidway]inte0/1；进入端口模式</span><br><span class="line">[Quidway-Ethernet0/1]duplex&#123;half|full|auto&#125;；配置端口工作状态</span><br><span class="line">[Quidway-Ethernet0/1]speed&#123;10|100|auto&#125;；配置端口工作速率</span><br><span class="line">[Quidway-Ethernet0/1]flow-control；配置端口流控</span><br><span class="line">[Quidway-Ethernet0/1]mdi&#123;across|auto|normal&#125;；配置端口平接扭接</span><br><span class="line">[Quidway-Ethernet0/1]portlink-type&#123;trunk|access|hybrid&#125;；设置端口工作模式</span><br><span class="line">[Quidway-Ethernet0/1]portaccessvlan3；当前端口加入到VLAN</span><br><span class="line">[Quidway-Ethernet0/2]porttrunkpermitvlan&#123;ID|All&#125;；设trunk允许的VLAN</span><br><span class="line">[Quidway-Ethernet0/3]porttrunkpvidvlan3；设置trunk端口的PVID</span><br><span class="line">[Quidway-Ethernet0/1]undoshutdown；激活端口</span><br><span class="line">[Quidway-Ethernet0/1]shutdown；关闭端口</span><br><span class="line">[Quidway-Ethernet0/1]quit；返回</span><br><span class="line">[Quidway]vlan3；创建VLAN</span><br><span class="line">[Quidway-vlan3]portethernet0/1；在VLAN中增加端口</span><br><span class="line">[Quidway-vlan3]porte0/1；简写方式</span><br><span class="line">[Quidway-vlan3]portethernet0/1toethernet0/4；在VLAN中增加端口</span><br><span class="line">[Quidway-vlan3]porte0/1toe0/4；简写方式</span><br><span class="line">[Quidway]monitor-port；指定镜像端口</span><br><span class="line">[Quidway]portmirror；指定被镜像端口</span><br><span class="line">[Quidway]portmirrorint_listobserving-portint_typeint_num；指定镜像和被镜像</span><br><span class="line">[Quidway]descriptionstring；指定VLAN描述字符</span><br><span class="line">[Quidway]description；删除VLAN描述字符</span><br><span class="line">[Quidway]displayvlan[vlan_id]；查看VLAN设置</span><br><span class="line">[Quidway]stp&#123;enable|disable&#125;；设置生成树,默认关闭</span><br><span class="line">[Quidway]stppriority4096；设置交换机的优先级</span><br><span class="line">[Quidway]stproot&#123;primary|secondary&#125;；设置为根或根的备份</span><br><span class="line">[Quidway-Ethernet0/1]stpcost200；设置交换机端口的花费</span><br><span class="line">[Quidway]link-aggregatione0/1toe0/4ingress|both;端口的聚合</span><br><span class="line">[Quidway]undolink-aggregatione0/1|all;始端口为通道号</span><br><span class="line">[SwitchA-vlanx]isolate-user-vlanenable；设置主vlan</span><br><span class="line">[SwitchA]isolate-user-vlansecondary；设置主vlan包括的子vlan</span><br><span class="line">[Quidway-Ethernet0/2]porthybridpvidvlan；设置vlan的pvid</span><br><span class="line">[Quidway-Ethernet0/2]porthybridpvid；删除vlan的pvid</span><br><span class="line">[Quidway-Ethernet0/2]porthybridvlanvlan_id_listuntagged；设置无标识的vlan</span><br></pre></td></tr></table></figure></p>
+<p>如果包的vlanid与PVId一致，则去掉vlan信息.默认PVID=1。<br><br>所以设置PVID为所属vlanid,设置可以互通的vlan为untagged.</p>
+<p>华为路由器交换机配置命令：路由器命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]displayversion；显示版本信息</span><br><span class="line">[Quidway]displaycurrent-configuration；显示当前配置</span><br><span class="line">[Quidway]displayinterfaces；显示接口信息</span><br><span class="line">[Quidway]displayiproute；显示路由信息</span><br><span class="line">[Quidway]sysnameaabbcc；更改主机名</span><br><span class="line">[Quidway]superpasswrod123456；设置口令</span><br><span class="line">[Quidway]interfaceserial0；进入接口</span><br><span class="line">[Quidway-serial0]ipaddress；配置端口IP地址</span><br><span class="line">[Quidway-serial0]undoshutdown；激活端口</span><br><span class="line">[Quidway]link-protocolhdlc；绑定hdlc协议</span><br><span class="line">[Quidway]user-interfacevty04</span><br><span class="line">[Quidway-ui-vty0-4]authentication-modepassword</span><br><span class="line">[Quidway-ui-vty0-4]setauthentication-modepasswordsimple222</span><br><span class="line">[Quidway-ui-vty0-4]userprivilegelevel3</span><br><span class="line">[Quidway-ui-vty0-4]quit</span><br><span class="line">[Quidway]debugginghdlcallserial0；显示所有信息</span><br><span class="line">[Quidway]debugginghdlceventserial0；调试事件信息</span><br><span class="line">[Quidway]debugginghdlcpacketserial0；显示包的信息</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：静态路由：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]iproute-static&#123;interfacenumber|nexthop&#125;[value][reject|blackhole]</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]iproute-static129.1.0.01610.0.0.2</span><br><span class="line">[Quidway]iproute-static129.1.0.0255.255.0.010.0.0.2</span><br><span class="line">[Quidway]iproute-static129.1.0.016Serial2</span><br><span class="line">[Quidway]iproute-static0.0.0.00.0.0.010.0.0.2</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：动态路由：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]rip；设置动态路由</span><br><span class="line">[Quidway]ripwork；设置工作允许</span><br><span class="line">[Quidway]ripinput；设置入口允许</span><br><span class="line">[Quidway]ripoutput；设置出口允许</span><br><span class="line">[Quidway-rip]network1.0.0.0；设置交换路由网络</span><br><span class="line">[Quidway-rip]networkall；设置与所有网络交换</span><br><span class="line">[Quidway-rip]peerip-address；</span><br><span class="line">[Quidway-rip]summary；路由聚合</span><br><span class="line">[Quidway]ripversion1；设置工作在版本1</span><br><span class="line">[Quidway]ripversion2multicast；设版本2，多播方式</span><br><span class="line">[Quidway-Ethernet0]ripsplit-horizon；水平分隔</span><br><span class="line">[Quidway]routeridA.B.C.D；配置路由器的ID</span><br><span class="line">[Quidway]ospfenable；启动OSPF协议</span><br><span class="line">[Quidway-ospf]import-routedirect；引入直联路由</span><br><span class="line">[Quidway-Serial0]ospfenablearea；配置OSPF区域</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：标准访问列表命令格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">acl[match-orderconfig|auto]；默认前者顺序匹配。</span><br><span class="line">rule[normal|special]&#123;permit|deny&#125;[sourcesource-addrsource-wildcard|any]</span><br></pre></td></tr></table></figure></p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]acl10</span><br><span class="line">[Quidway-acl-10]rulenormalpermitsource10.0.0.00.0.0.255</span><br><span class="line">[Quidway-acl-10]rulenormaldenysourceany</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：扩展访问控制列表配置命令<br> 配置TCP/UDP协议的扩展访问列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rule&#123;normal|special&#125;&#123;permit|deny&#125;&#123;tcp|udp&#125;source&#123;|any&#125;destination|any&#125;</span><br><span class="line"> [operate]</span><br></pre></td></tr></table></figure></p>
+<p>配置ICMP协议的扩展访问列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rule&#123;normal|special&#125;&#123;permit|deny&#125;icmpsource&#123;|any]destination&#123;|any]</span><br><span class="line"> [icmp-code][logging]</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：扩展访问控制列表操作符的含义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">equalportnumber；等于</span><br><span class="line">greater-thanportnumber；大于</span><br><span class="line">less-thanportnumber；小于</span><br><span class="line">not-equalportnumber；不等</span><br><span class="line">rangeportnumber1portnumber2；区间</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：扩展访问控制列表举例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]acl101</span><br><span class="line">[Quidway-acl-101]ruledenysouceanydestinationany</span><br><span class="line">[Quidway-acl-101]rulepermiticmpsourceanydestinationanyicmp-typeecho</span><br><span class="line">[Quidway-acl-101]rulepermiticmpsourceanydestinationanyicmp-typeecho-reply</span><br><span class="line">[Quidway]acl102</span><br><span class="line">[Quidway-acl-102]rulepermitipsource10.0.0.10.0.0.0destination202.0.0.10.0.0.0</span><br><span class="line">[Quidway-acl-102]ruledenyipsourceanydestinationany</span><br><span class="line">[Quidway]acl103</span><br><span class="line">[Quidway-acl-103]rulepermittcpsourceanydestination10.0.0.10.0.0.0destination-portequalftp</span><br><span class="line">[Quidway-acl-103]rulepermittcpsourceanydestination10.0.0.20.0.0.0destination-portequalwww</span><br><span class="line">[Quidway]firewallenable</span><br><span class="line">[Quidway]firewalldefaultpermit|deny</span><br><span class="line">[Quidway]inte0</span><br><span class="line">[Quidway-Ethernet0]firewallpacket-filter101inbound|outbound</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：地址转换配置举例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]firewallenable</span><br><span class="line">[Quidway]firewalldefaultpermit</span><br><span class="line">[Quidway]acl101;内部指定主机可以进入e0</span><br><span class="line">[Quidway-acl-101]ruledenyipsourceanydestinationany</span><br><span class="line">[Quidway-acl-101]rulepermitipsource129.38.1.10destinationany</span><br><span class="line">[Quidway-acl-101]rulepermitipsource129.38.1.20destinationany</span><br><span class="line">[Quidway-acl-101]rulepermitipsource129.38.1.30destinationany</span><br><span class="line">[Quidway-acl-101]rulepermitipsource129.38.1.40destinationany</span><br><span class="line">[Quidway-acl-101]quit</span><br><span class="line">[Quidway]inte0</span><br><span class="line">[Quidway-Ethernet0]firewallpacket-filter101inbound</span><br><span class="line">[Quidway]acl102;外部特定主机和大于1024端口的数据包允许进入S0</span><br><span class="line">[Quidway-acl-102]ruledenyipsourceanydestinationany</span><br><span class="line">[Quidway-acl-102]rulepermittcpsource202.39.2.30destination202.38.160.10</span><br><span class="line">[Quidway-acl-102]rulepermittcpsourceanydestination202.38.160.10destination-portgreat-than</span><br><span class="line">1024</span><br><span class="line">[Quidway-acl-102]quit</span><br><span class="line">[Quidway]ints0</span><br><span class="line">[Quidway-Serial0]firewallpacket-filter102inbound；设202.38.160.1是路由器出口IP。</span><br><span class="line">[Quidway-Serial0]natoutbound101interface;是Easyip，将acl101允许的IP从本接口出时变换源地址。</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：内部服务器地址转换配置命令(静态nat)：<br>natserverglobal[port]insideport[protocol];global_port不写时使用inside_port<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Quidway-Serial0]natserverglobal202.38.160.1inside129.38.1.1ftptcp</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.1inside129.38.1.2telnettcp</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.1inside129.38.1.3wwwtcp</span><br></pre></td></tr></table></figure></p>
+<p>设有公网IP：202.38.160.101~202.38.160.103可以使用。;对外访问(原例题)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]nataddress-group202.38.160.101202.38.160.103pool1;建立地址池</span><br><span class="line">[Quidway]acl1</span><br><span class="line">[Quidway-acl-1]rulepermitsource10.110.10.00.0.0.255;指定允许的内部网络</span><br><span class="line">[Quidway-acl-1]ruledenysourceany</span><br><span class="line">[Quidway-acl-1]intserial0</span><br><span class="line">[Quidway-Serial0]natoutbound1address-grouppool1;在s0口从地址池取出IP对外访问</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.101inside10.110.10.1ftptcp</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.102inside10.110.10.2wwwtcp</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.1028080inside10.110.10.3wwwtcp</span><br><span class="line">[Quidway-Serial0]natserverglobal202.38.160.103inside10.110.10.4smtpudp</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：PPP设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Quidway-s0]link-protocolppp;默认的协议</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：PPP验证：<br> 主验方：pap|chap<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]local-userq2password&#123;simple|cipher&#125;hello;路由器1</span><br><span class="line">[Quidway]interfaceserial0</span><br><span class="line">[Quidway-serial0]pppauthentication-mode&#123;pap|chap&#125;</span><br><span class="line">[Quidway-serial0]pppchapuserq1;pap时，没有此句</span><br></pre></td></tr></table></figure></p>
+<p>华为路由交换机配置命令：pap被验方：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]interfaceserial0;路由器2</span><br><span class="line">[Quidway-serial0]ppppaplocal-userq2password&#123;simple|cipher&#125;hello</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：chap被验方：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]interfaceserial0;路由器2</span><br><span class="line">[Quidway-serial0]pppchapuserq2;自己路由器名</span><br><span class="line">[Quidway-serial0]local-userq1password&#123;simple|cipher&#125;hello;对方路由器名</span><br></pre></td></tr></table></figure></p>
+<p>帧中继frame-relay(二分册6-61)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[q1]frswitching</span><br><span class="line">[q1]ints1</span><br><span class="line">[q1-Serial1]ipaddress192.168.34.51255.255.255.0</span><br><span class="line">[q1-Serial1]link-protocolfr;封装帧中继协议</span><br><span class="line">[q1-Serial1]frinterface-typedce</span><br><span class="line">[q1-Serial1]frdlci100</span><br><span class="line">[q1-Serial1]frinarp</span><br><span class="line">[q1-Serial1]frmapip192.168.34.52dlci100</span><br><span class="line">[q2]ints1</span><br><span class="line">[q2-Serial1]ipaddress192.168.34.52255.255.255.0</span><br><span class="line">[q2-Serial1]link-protocolfr</span><br><span class="line">[q2-Serial1]frinterface-typedte</span><br><span class="line">[q2-Serial1]frdlci100</span><br><span class="line">[q2-Serial1]frinarp</span><br><span class="line">[q2-Serial1]frmapip192.168.34.51dlci100</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：帧中继监测<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[q1]displayfrlmi-info[]interfacetypenumber]</span><br><span class="line">[q1]displayfrmap</span><br><span class="line">[q1]displayfrpvc-info[serialinterface-number][dlcidlci-number]</span><br><span class="line">[q1]displayfrdlci-switch</span><br><span class="line">[q1]displayfrinterface</span><br><span class="line">[q1]resetfrinarp-info</span><br><span class="line">[q1]debuggingfrall[interfacetypenumber]</span><br><span class="line">[q1]debuggingfrarp[interfacetypenumber]</span><br><span class="line">[q1]debuggingfrevent[interfacetypenumber]</span><br><span class="line">[q1]debuggingfrlmi[interfacetypenumber]</span><br></pre></td></tr></table></figure></p>
+<p>华为路由器交换机配置命令：启动ftp服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Quidway]local-userftppassword&#123;simple|cipher&#125;aaaservice-typeftp</span><br><span class="line">[Quidway]ftpserverenable</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/华为交换机配置/" rel="tag"># 华为交换机配置</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/17/Hexo写博客/" rel="next" title="Hexo写博客">
+                <i class="fa fa-chevron-left"></i> Hexo写博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">秋里一个凉</p>
+              <p class="site-description motion-element" itemprop="description">我猜在南锣的里面,中戏的门前,或许你会再次出现</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">秋里一个凉</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'Alwaysfall',
+            repo: 'https://github.com/Alwaysfall/pinglun/',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8ba31b6f25c6911dc7832bf46796047988bde8c9',
+            
+                client_id: '85bdf69af6b5ebe6c03f'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
